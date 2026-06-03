@@ -2,47 +2,11 @@
 
 import { useMemo } from "react";
 import type { SettingsContextType } from "@/context/setting";
+import { getAdjacentCells } from "@/utils/calAdjacents";
 import { Area } from "../area";
 
 interface FieldProps {
 	settings: SettingsContextType;
-}
-
-function getAdjacentCells(
-	matrix: { id: string; value: number }[][],
-	row: number,
-	col: number,
-) {
-	const totalRows = matrix.length;
-	if (totalRows === 0) return [];
-	const totalCols = matrix[0].length;
-
-	const adjacentCells = [];
-
-	const directions = [
-		[-1, -1],
-		[-1, 0],
-		[-1, 1],
-		[0, -1],
-		[0, 1],
-		[1, -1],
-		[1, 0],
-		[1, 1],
-	];
-
-	for (const [dirRow, dirCol] of directions) {
-		const newRow = row + dirRow;
-		const newCol = col + dirCol;
-
-		const isRowValid = newRow >= 0 && newRow < totalRows;
-		const isColValid = newCol >= 0 && newCol < totalCols;
-
-		if (isRowValid && isColValid) {
-			adjacentCells.push(matrix[newRow][newCol]);
-		}
-	}
-
-	return adjacentCells;
 }
 
 export function Field({ settings }: FieldProps) {
@@ -55,7 +19,7 @@ export function Field({ settings }: FieldProps) {
 			Array.from({ length: settings.columnsNumber }, (_, col) => ({
 				id: `${row}-${col}`,
 				value: 0,
-				hidden: true,
+				// hidden: true,
 			})),
 		);
 
@@ -102,8 +66,8 @@ export function Field({ settings }: FieldProps) {
 			}}
 		>
 			{matrix.map((row) =>
-				row.map(({ id, value, hidden }) => (
-					<Area key={id} size={cellSize} value={value} hidden={hidden} />
+				row.map(({ id, value }) => (
+					<Area key={id} size={cellSize} value={value} hidden />
 				)),
 			)}
 		</section>
