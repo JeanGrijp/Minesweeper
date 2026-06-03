@@ -1,10 +1,9 @@
 "use client";
 
-import { Area } from "@/components/area";
+import { useContext } from "react";
 import { Field } from "@/components/field";
 import { Menu } from "@/components/menu";
 import { SettingsContext } from "@/context/setting";
-import { useContext } from "react";
 
 export default function Home() {
 	const { settings } = useContext(SettingsContext);

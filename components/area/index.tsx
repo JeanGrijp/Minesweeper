@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, memo } from "react";
-import { Button } from "../ui/button";
 import { Bomb } from "lucide-react";
+import { memo, useState } from "react";
+import { Button } from "../ui/button";
 
 interface AreaProps {
 	children?: React.ReactNode;
