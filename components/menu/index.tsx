@@ -2,8 +2,7 @@
 
 import { SettingsContext } from "@/context/setting";
 import { useContext } from "react";
-import { Slider } from "../ui/slider";
-import { Label } from "../ui/label";
+
 import { ColumnsNumber } from "./columnsNumber";
 import { RowsNumber } from "./rowsNumber";
 import { BombsNumber } from "./bombsNumber copy";

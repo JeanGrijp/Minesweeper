@@ -1,12 +1,16 @@
 "use client";
 
+import type { Dispatch, ReactNode, SetStateAction } from "react";
 import { createContext, useState } from "react";
-import type { Dispatch, SetStateAction, ReactNode } from "react";
 
 enum Difficulty {
 	EASY = "easy",
 	MEDIUM = "medium",
 	HARD = "hard",
+}
+interface ISettingsContextProvider {
+	settings: SettingsContextType;
+	setSettings: Dispatch<SetStateAction<SettingsContextType>>;
 }
 
 export type SettingsContextType = {
@@ -18,11 +22,6 @@ export type SettingsContextType = {
 
 	bombsNumber: number;
 };
-
-interface ISettingsContextProvider {
-	settings: SettingsContextType;
-	setSettings: Dispatch<SetStateAction<SettingsContextType>>;
-}
 
 export const SettingsContext = createContext<ISettingsContextProvider>({
 	settings: {
